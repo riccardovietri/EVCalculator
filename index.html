@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>EV Tax Credit Calculator</title>
+  </head>
+  <body>
+    <h1>EV Tax Credit Calculator</h1>
+    <p>Enter your electric vehicle's information to see if you are eligible for the federal tax credit:</p>
+	<script>
+  	function calculateTaxCredit() {
+    // Get the form values
+    var model = document.getElementById("model").value;
+    var make = document.getElementById("make").value;
+    var price = document.getElementById("price").value;
+
+    // Calculate the tax credit amount
+    var taxCreditAmount = 0;
+    if (model == "suv" && price <= 80000) {
+      taxCreditAmount = 7500;
+    } else if (model == "other" && price <= 55000) {
+      taxCreditAmount = 7500;
+    }
+
+    // Display the tax credit amount
+    var message = "You are not eligible for the federal tax credit.";
+    if (taxCreditAmount > 0) {
+      message = "You are eligible for a tax credit of $" + taxCreditAmount + ".";
+    }
+    alert(message);
+  }
+	</script>
+	<form onsubmit="calculateTaxCredit(); return false;">
+      <label for="model">Model:</label><br>
+      <select id="model" name="model">
+        <option value="suv">SUV</option>
+        <option value="other">Other</option>
+      </select><br>
+      <label for="make">Make:</label><br>
+      <input type="text" id="make" name="make"><br>
+      <label for="price">Price (USD):</label><br>
+      <input type="number" id="price" name="price"><br>
+      <input type="submit" value="Submit">
+
+    </form> 
+
+
+  </body>
+
+</html>
